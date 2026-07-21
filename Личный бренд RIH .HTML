@@ -1,0 +1,709 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>КОНСТРУКЦИЯ ПРОДУКТИВНОСТИ | Моя Эффективность</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --black: #0a0a0a;
+            --white: #f0f0f0;
+            --red: #d32f2f;
+            --gray: #555;
+            --light-gray: #888;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background-color: var(--white);
+            color: var(--black);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Навигация */
+        nav.navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 5%;
+            border-bottom: 4px solid var(--black);
+            background: var(--white);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo i {
+            color: var(--black);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--black);
+            font-size: 16px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--red);
+        }
+
+        .cta-btn {
+            background-color: var(--red);
+            color: var(--white);
+            border: none;
+            padding: 15px 30px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .cta-btn:hover {
+            background-color: #b71c1c;
+            padding-left: 40px; /* Сдвиг при наведении */
+        }
+
+        /* Hero */
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 100px 5%;
+            border-bottom: 8px solid var(--black);
+        }
+
+        .hero-content {
+            width: 50%;
+            min-width: 350px;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            line-height: 0.9;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        .highlight {
+            color: var(--red);
+            background-color: var(--black);
+            color: white;
+            padding: 0 10px;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 500px;
+            margin-bottom: 50px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .primary-btn {
+            background-color: var(--black);
+            color: var(--white);
+            border: 4px solid var(--black);
+            padding: 20px 40px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .primary-btn:hover {
+            background-color: var(--white);
+            color: var(--black);
+            padding-right: 60px;
+        }
+
+        .secondary-btn {
+            background-color: var(--white);
+            color: var(--black);
+            border: 4px solid var(--black);
+            padding: 20px 40px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .secondary-btn:hover {
+            background-color: var(--red);
+            color: var(--white);
+            border-color: var(--red);
+            padding-right: 60px;
+        }
+
+        .hero-image {
+            width: 40%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .abstract-square {
+            width: 300px;
+            height: 300px;
+            background-color: var(--black);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            border: 4px solid var(--black);
+        }
+
+        .inner-square {
+            width: 220px;
+            height: 220px;
+            background-color: var(--white);
+            border: 4px solid var(--black);
+        }
+
+        .dot {
+            width: 80px;
+            height: 80px;
+            background-color: var(--red);
+            position: absolute;
+            top: 30px;
+            right: 30px;
+        }
+
+        /* Разделы (Philosophy, Services) */
+        section {
+            padding: 100px 5%;
+            border-bottom: 4px solid var(--black);
+        }
+
+        .section-title {
+            font-size: 48px;
+            text-transform: uppercase;
+            margin-bottom: 60px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 24px;
+            color: var(--gray);
+            margin-bottom: 60px;
+            max-width: 800px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .card {
+            border: 4px solid var(--black);
+            padding: 50px;
+            transition: transform 0.3s;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateX(10px);
+        }
+
+        .card h3 {
+            font-size: 32px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .card p {
+            font-size: 18px;
+            color: var(--gray);
+        }
+
+        .icon {
+            font-size: 48px;
+            color: var(--black);
+            margin-bottom: 20px;
+        }
+
+        /* Calculator Section (Форма-квадрат) */
+        .calculator-section {
+            background-color: var(--black);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .calc-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            width: 100%;
+            max-width: 1200px;
+            gap: 0;
+        }
+
+        .form-section {
+            background-color: var(--black);
+            padding: 80px;
+            border-right: 8px solid var(--white);
+        }
+
+        .form-section h2 {
+            font-size: 48px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 24px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 20px;
+            background-color: var(--white);
+            border: 4px solid var(--black);
+            cursor: pointer;
+            outline: none;
+        }
+
+        .calc-btn {
+            width: 100%;
+            padding: 25px;
+            background-color: var(--red);
+            color: var(--white);
+            border: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 24px;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 40px;
+        }
+
+        .calc-btn:hover {
+            background-color: var(--white);
+            color: var(--black);
+        }
+
+        .result-section {
+            background-color: var(--white);
+            color: var(--black);
+            padding: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-left: 8px solid var(--black);
+        }
+
+        .result-box {
+            border: 4px solid var(--black);
+            padding: 40px;
+            width: 100%;
+            background-color: var(--white);
+        }
+
+        .result-box h3 {
+            font-size: 36px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        .meter-container {
+            width: 100%;
+            height: 40px;
+            background-color: var(--gray);
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .meter-fill {
+            height: 100%;
+            background-color: var(--red);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 80px 5% 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            width: 100%;
+            max-width: 1000px;
+            margin-bottom: 60px;
+            border-bottom: 4px solid var(--white);
+            padding-bottom: 60px;
+        }
+
+        .footer-info h3 {
+            font-size: 48px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .footer-info p {
+            font-size: 18px;
+            color: var(--light-gray);
+            margin-bottom: 10px;
+        }
+
+        .footer-links h4 {
+            font-size: 32px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--red);
+        }
+
+        .copyright {
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Анимации */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .floating {
+            animation: float 8s ease-in-out infinite;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 900px) {
+            .hero { flex-direction: column-reverse; text-align: center; }
+            .hero-content { width: 100%; }
+            .hero h1 { font-size: 48px; }
+            .hero-buttons { justify-content: center; }
+            .calc-container { grid-template-columns: 1fr; }
+            .form-section { border-right: none; border-bottom: 8px solid var(--white); }
+            .result-section { border-left: none; border-top: 8px solid var(--black); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-square"></i>
+                <span>Конструктивный Метод</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#science">Наука</a></li>
+                <li><a href="#method">Метод</a></li>
+                <li><a href="#results">Результаты</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+            <button class="cta-btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Анализ</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Ваша продуктивность —<br>это <span class="highlight>Квадрат</span> <br>идеальной формы.</h1>
+            <p>Я удаляю хаос. Оставляю только необходимые элементы: Энергию, Лимиты и Автоматизацию. Ваш персональный `user_profile.json` — это фундамент.</p>
+            <div class="hero-buttons">
+                <button class="primary-btn" onclick="document.getElementById('calculator').scrollIntoView({behavior: 'smooth'})">Рассчитать Потенциал</button>
+                <button class="secondary-btn" onclick="document.getElementById('method').scrollIntoView({behavior: 'smooth'})">Метод</button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="abstract-square floating">
+                <div class="inner-square"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Наука и Философия -->
+    <section id="science">
+        <div class="container">
+            <h2 class="section-title">Геометрия Результата</h2>
+            <p class="subtitle">Не дисциплина, а точная настройка системы. Каждый элемент вашего рабочего процесса должен иметь функцию и быть необходимым.</p>
+            
+            <div class="grid">
+                <div class="card">
+                    <div class="icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Энергия как Вектор</h3>
+                    <p>Вы не станете «продуктивнее», если будете работать дольше. Вы станете продуктивнее, если направите энергию в правильное время в правильную форму (задачу).</p>
+                </div>
+                <div class="card">
+                    <div class="icon"><i class="fas fa-balance-scale"></i></div>
+                    <h3>Лимиты как Фильтр</h3>
+                    <p>Свобода — это не отсутствие границ. Это понимание того, что 7 ключевых задач дадут вам 80% результата. Остальное — шум.</p>
+                </div>
+                <div class="card">
+                    <div class="icon"><i class="fas fa-robot"></i></div>
+                    <h3>Автоматизация как Гармония</h3>
+                    <p>То, что повторяется — должно исчезать. Рутина уходит в фон, освобождая нейроны для креатива. Ваш workflow становится самодостаточным.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- ... existing code ... -->
+    <section id="method">
+        <div class="container">
+            <h2 class="section-title">Структура Персональной Системы</h2>
+            <p class="subtitle">От интервью к цифровому двойнику. Я создам вашу индивидуальную схему (`user_profile.json`), которая станет вашим личным алгоритмом успеха.</p>
+            
+            <div class="grid">
+                <div class="card">
+                    <div class="icon"><i class="fas fa-file-alt"></i></div>
+                    <h3>Диагностика Профиля</h3>
+                    <p>Глубокое интервью и тестирование. Мы находим ваши «точки резонанса» (когда вы работаете идеально) и «слепые зоны» (когда вы теряете энергию без возврата).</p>
+                </div>
+                <div class="card">
+                    <div class="icon"><i class="fas fa-code"></i></div>
+                    <h3>Цифровой Фундамент</h3>
+                    <p>Создание вашего `user_profile.json`. Это не документ, а живая система: энергетические пики, оптимальное количество задач, идеальные приоритеты.</p>
+                </div>
+                <div class="card">
+                    <div class="icon"><i class="fas fa-wrench"></i></div>
+                    <h3>Сборка Системы</h3>
+                    <p>Автоматизация рутины, настройка напоминаний, создание шаблонов. Вы получаете готовый «двигатель», который работает в вашу пользу, а не против вас.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Результаты (Social Proof) -->
+    <section id="results" style="background-color: var(--black); color: var(--white);">
+        <div class="container">
+            <h2 class="section-title" style="color: var(--white);">Клиенты: До и После</h2>
+            <p class="subtitle">Реальные цифры из моей практики. Никаких обещаний, только геометрия изменений.</p>
+            
+            <div class="grid">
+                <div class="card" style="border-color: var(--white);">
+                    <h3 style="color: var(--white);">-80% выгорания</h3>
+                    <p>Клиент, редактор журнала. Мы перестали считать часы и начали строить график по пикам энергии. Теперь он выдает больше материала, спит 8 часов и в отличной форме.</p>
+                </div>
+                <div class="card" style="border-color: var(--white);">
+                    <h3 style="color: var(--white);">x2 Качество</h3>
+                    <p>IT-архитектор. Мы вычленили его «主任务» (главную задачу) и вынесли рутину в скрипты. Сроки проектов сократились, а код стал чище.</p>
+                </div>
+                <div class="card" style="border-color: var(--white);">
+                    <h3 style="color: var(--white);">+40% Доход</h3>
+                    <p>Консультант по фитнесу. Мы автоматизировали отчетность и настроили приоритезацию клиентов. Теперь она работает 3 дня в неделю, но доход вырос.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Калькулятор (Финальный калл-к-экшен) -->
+    <section id="calculator" class="calculator-section">
+        <div class="container">
+            <div class="calc-container">
+                <div class="form-section">
+                    <h2>Ваш текущий Статус</h2>
+                    <p style="color: var(--light-gray); margin-bottom: 50px;">Заполните 3 параметра, чтобы увидеть, насколько ваша система близка к идеальной форме.</p>
+                    
+                    <form id="ecoForm">
+                        <div class="form-group">
+                            <label>Энергия утром?</label>
+                            <select id="morningEnergy" required>
+                                <option value="1">Туман (требуется кофе, чтобы начать)</option>
+                                <option value="3">Постепенный включатель (1-2 часа до дела)</option>
+                                <option value="7" selected>Мгновенный старт (встал — сделал)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Количество когнитивных задач/день?</label>
+                            <select id="dailyTasks" required>
+                                <option value="5">Меньше 3 (или постоянно отвлекаюсь)</option>
+                                <option value="10" selected>4-6 (успеваю, но в режиме "горения")</option>
+                                <option value="15">7+ (стабильно, но с утомлением)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Стратегия приоритетов?</label>
+                            <select id="priorityType" required>
+                                <option value="low">Случайная (что в голову пришло)</option>
+                                <option value="medium" selected>Свой список (важное-сначала)</option>
+                                <option value="high">Гибкая (адаптируюсь под обстоятельства)</option>
+                            </select>
+                        </div>
+                        <button type="button" class="calc-btn" onclick="calculateProductivityScore()">Рассчитать Коэффициент Формы</button>
+                    </form>
+                </div>
+
+                <div class="result-section">
+                    <div class="result-box">
+                        <h3>Ваш Продуктивный Потенциал:</h3>
+                        <p id="resultText" style="font-size: 20px; margin-bottom: 20px;">Заполните данные для расчета.</p>
+                        
+                        <div class="meter-container">
+                            <div class="meter-fill" id="meterFill"></div>
+                        </div>
+
+                        <p style="font-size: 14px; color: var(--light-gray); margin-top: 20px; text-align: center;">
+                            *Оценка на основе модели: Энергия + Лимиты + Приоритеты.
+                        </p>
+                        <button class="cta-btn" style="width:100%; margin-top: 40px;" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+                            Получить Персональный Профиль
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>КОНСТРУКЦИЯ ПРОДУКТИВНОСТИ</h3>
+                    <p>Я помогаю специалистам не «выживать» в потоке задач, а строить идеальную геометрию работы и жизни.</p>
+                    <p style="margin-top: 30px;">
+                        <i class="fas fa-envelope"></i> <a href="mailto:Amirmihak@gmail.com" style="color: var(--red);">Amirmihak@gmail.com</a>
+                    </p>
+                    <p>
+                        <i class="fab fa-telegram"></i> <a href="@Guardian_Angel_11" style="color: var(--red);">@Guardian_Angel_11</a>
+                    </p>
+                    <p style="margin-top: 30px; font-size: 14px; color: var(--light-gray);">
+                        Принимаю заказы только на квартал вперед.<br>Гарантия конфиденциальности и глубокой персонализации.
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h4>КОМПОНЕНТЫ</h4>
+                    <ul>
+                        <li><a href="#home">Главная</a></li>
+                        <li><a href="#science">Наука</a></li>
+                        <li><a href="#method">Метод</a></li>
+                        <li><a href="#results">Результаты</a></li>
+                        <li><a href="#calculator">Калькулятор</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                2026 ПРОФИЛЬ ПРОДУКТИВНОСТИ. СТРОЕНИЕ.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function calculateProductivityScore() {
+            const morning = parseFloat(document.getElementById('morningEnergy').value);
+            const tasks = document.getElementById('dailyTasks').value;
+            const priority = document.getElementById('priorityType').value;
+
+            // Логика: Оптимально — 7 энергии, 10 задач (4-6), high приоритет.
+            // Максимальный балл (для расчета%) пусть будет 20.
+            const maxScore = (7 + 10 + 1) * 5; // 90 условных очков
+            let score = (morning + parseInt(tasks)/2 + (priority === 'high' ? 1 : (priority === 'medium' ? 0.5 : 0))) * 5;
+
+            // Нормализуем до 100%
+            const percentage = Math.min((score / maxScore) * 100, 100);
+
+            // Формируем текст
+            let resultText = `Коэффициент Вашей Продуктивной Формы: <strong>${Math.round(percentage)}%</strong>.`;
+            
+            if (percentage < 35) {
+                resultText += "<br><br>Система требует ревизии. Начнём с анализа энергетических потоков.";
+            } else if (percentage < 65) {
+                resultText += "<br><br>Хорошая структура, но есть «треугольники напряжения». Давайте их исключим.";
+            } else {
+                resultText += "<br><br>Близко к идеалу! Осталось отшлифовать рутину и выйти на новый уровень.";
+            }
+
+            // Обновляем DOM
+            document.getElementById('resultText').innerHTML = resultText;
+            document.getElementById('meterFill').style.width = `${percentage}%`;
+            
+            // Меняем цвет шкалы в зависимости от результата
+            const meterFill = document.getElementById('meterFill');
+            if (percentage < 45) {
+                meterFill.style.backgroundColor = '#555'; // Серый
+            } else if (percentage < 75) {
+                meterFill.style.backgroundColor = 'var(--red)'; // Красный
+            } else {
+                meterFill.style.backgroundColor = '#000'; // Черный (идеал)
+            }
+        }
+
+        // Плавная прокрутка для всех ссылок
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
